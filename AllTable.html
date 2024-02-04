@@ -1,0 +1,239 @@
+<style>
+/* Change the background color of the dropdown button when the dropdown content is shown */
+#AllTable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#AllTable td, #AllTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#AllTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#AllTable tr:hover {background-color: #ddd;}
+
+#AllTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #042159;
+  color: white;
+}
+#myInput {
+  background-image: url('search-icon2.png'); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 40%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+#AllTable {
+  border-collapse: collapse; /* Collapse borders */
+  width: 100%; /* Full-width */
+  border: 1px solid #ddd; /* Add a grey border */
+  font-size: 18px; /* Increase font-size */
+}
+
+#AllTable th, #myTable td {
+  text-align: left; /* Left-align text */
+  padding: 12px; /* Add padding */
+}
+
+#AllTable tr {
+  /* Add a bottom border to all table rows */
+  border-bottom: 1px solid #ddd;
+}
+
+#AllTable tr.header, #myTable tr:hover {
+  /* Add a grey background color to the table header and on hover */
+  background-color: #f1f1f1;
+}
+.icon {
+  display: inline-block;
+  float: right;
+}
+.heading:hover{
+  cursor:pointer;
+}
+</style>
+<script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("AllTable");
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = "asc";
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /* Loop through all table rows (except the
+    first, which contains table headers): */
+    for (i = 1; i < (rows.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Get the two elements you want to compare,
+      one from current row and one from the next: */
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /* Check if the two rows should switch place,
+      based on the direction, asc or desc: */
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark that a switch has been done: */
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      // Each time a switch is done, increase this count by 1:
+      switchcount ++;
+    } else {
+      /* If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again. */
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+<script>
+function searchTable() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("AllTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+<table id="AllTable">
+  <input type="text" id="myInput" onkeyup="searchTable()" placeholder="Search for player names">
+  <tr>
+    <th class='heading' onclick="sortTable(0)">Player<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+        <th class='heading' onclick="sortTable(0)">Position<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+    <th class='heading' onclick="sortTable(1)">Fantasy Team<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+    <th class='heading' onclick="sortTable(2)">Fantasy Points<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+    <th class='heading' onclick="sortTable(3)">Kills<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+    <th class='heading' onclick="sortTable(4)">Assists<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+    <th class='heading' onclick="sortTable(5)">Digs<img src="sorticonverysmall.png" alt="Sort by column icon"/></th>
+    <th class='heading' onclick="sortTable(6)">Perfect Passes<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+    <th class='heading' onclick="sortTable(7)">Blocks<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+    <th class='heading' onclick="sortTable(8)">Aces<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+    <th class='heading' onclick="sortTable(9)">Errors<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+  </tr>
+  <tr>
+    <td class='left'>Nunneviller</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td class='left'>O'Neal</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+    <tr>
+    <td class='left'>Pukis</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+    <tr>
+    <td class='left'>Player</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+    <tr>
+    <td class='left'>Player</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+    <tr>
+    <td class='left'>Player</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+</table>
+      </div>
+    </div>
+  </div>
