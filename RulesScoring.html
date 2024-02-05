@@ -22,6 +22,12 @@ li.dropdown {
   float: left;
   display: inline;
   }
+.bullet {
+  font-size: 14px;
+  margin-left: 10px;
+  list-style-type: circle;
+  display:inline;
+}
 a {
   display: block;
   padding: 8px;
@@ -169,9 +175,9 @@ and is wrapped around the whole page content, except for the footer in this exam
 
 <!-- Header -->
 <header class="w3-container w3-center w3-padding-32">
-  <h1><b>PVF Fantasy Volleyball League</b></h1>
+  <a href="index.html"><h1><b>PVF Fantasy Volleyball League</b></h1></a>
   <p>Welcome to Pro Volleyball Federation Fantasy Volleyball</p>
-  <img src="fantasy volleyball league (1).png" alt="Fantasy Volleyball League logo featuring a yellow and blue volleyball with a net, and the words 'Fantasy Volleyball League'" width="220" height="175">
+  <a href="index.html"><img src="fantasy volleyball league (1).png" alt="Fantasy Volleyball League logo featuring a yellow and blue volleyball with a net, and the words 'Fantasy Volleyball League'" width="220" height="175"></a>
 </header>
   <body style="background-color:#EBF3FC;">
   </body>
@@ -183,15 +189,6 @@ and is wrapped around the whole page content, except for the footer in this exam
   <li class="navigation"><button class="home"><a href="index.html"><b>Home</b></a></button></li>
   <li class="dropdown">
     <button class="dropbtn"><a href="Team Stats.html"><b>Team Stats</b></a></button>
-  <div class="dropdown-content">
-    <a href="Anna Marie.html">Anna Marie</a>
-    <a href="Lauren.html">Lauren</a>
-    <a href="Madi.html">Madi</a>
-    <a href="Mike.html">Mike</a>
-    <a href="Shauna.html">Shauna</a>
-    <a href="Tim.html">Tim</a>
-    <a href="Vincent.html">Vincent</a>
-  </div>
   <li class="navigation"><button class="BoxScores"><a href="BoxScores.html"><b>Box Scores</b></a></button></li>
 </li>
   <li class="navigation"><button class="Trades"><a href="Trades.html"><b>Trades</b></a></button></li>
@@ -211,9 +208,10 @@ and is wrapped around the whole page content, except for the footer in this exam
     <button class="accordion">Draft rules</button>
 <div class="panel">
   <ul>
-    <li class="bullet">- We will be doing a "Snake" style draft (first player picks last every other round)</li>
-    <li class="bullet">- The draft will be seven rounds</li>
-    <li class="bullet">- Teams will need: 1 Setter, 2 Outside Hitters, 1 Opposite Hitter, 2 Blockers, and 1 Libero</li>
+    <li class="bullet"><h5>- We will be doing a "Snake" style draft (first player picks last every other round)</h5></li>
+    <li class="bullet"><h5>- The draft will be seven rounds</h5></li>
+    <li class="bullet"><h5>- Each team needs: 1 Setter, 2 Outside Hitters, 1 Opposite Hitter, 2 Blockers, and 1 Libero</h5></li>
+    <li class="bullet"><h5>- Each player will have five minutes to choose. If a player cannot make it to the draft, they can choose to have either Lauren draft their roster or we will autodraft the next best player by position.</h5></li>
 </div>
 
 <button class="accordion">Scoring system</button>
@@ -261,11 +259,22 @@ and is wrapped around the whole page content, except for the footer in this exam
 <div class="panel">
   <h5>There are two reasons for this:</h5>
     <ul>
-    <li class="bullet">- We normalize the stats to equal a four set match</li>
-    <li class="bullet">- Our data scraping system is not 100% accurate (but very close)</li>
+    <li class="bullet"><h5>- We normalize the stats to equal a four set match</h5></li>
+    <li class="bullet"><h5>- Our data scraping system is not 100% accurate (but very close)</h5></li>
   </ul>
 </div>
-
+<button class="accordion">Where can I watch the games?</button>
+<div class="panel">
+  <h5>Games are free to watch on YouTube, BallyLive, and Watch Stadium, dependent on the game. For the full schedule and watch links, click on the "Watch Games" menu tab above. BallyLive and Watch Stadium might require a free account to watch.</h5>
+</div>
+<button class="accordion">How can I trade players?</button>
+<div class="panel">
+  <h5>If you would like to make a trade, please text the groupchat and have both players message to confirm the trade.</h5>
+</div>
+<button class="accordion">How can I add a free agent?</button>
+<div class="panel">
+  <h5>If you would like to add a free agent, please text the groupchat with both the player you want to add and the current roster player you would like to drop.</h5>
+</div>
 <script>
 var acc = document.getElementsByClassName("accordion");
 var i;
