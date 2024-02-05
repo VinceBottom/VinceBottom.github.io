@@ -13,7 +13,12 @@ ul {
   margin: 0;
   padding: 0;
 }
-li {
+li.navigation {
+  float: left;
+  display: inline;
+  }
+}
+li.dropdown {
   float: left;
   display: inline;
   }
@@ -21,6 +26,18 @@ a {
   display: block;
   padding: 8px;
 ;
+}
+a:link { 
+  text-decoration: none; 
+} 
+a:visited { 
+  text-decoration: none; 
+} 
+a:hover { 
+  text-decoration: none; 
+} 
+a:active { 
+  text-decoration: none; 
 }
 nav{
    display: flex;
@@ -39,7 +56,9 @@ img {
   left:0;
   top:0;
 }
-
+.bullet{
+  display:block;
+}
 /* Dropdown Button */
 .dropbtn {
   color: black;
@@ -79,7 +98,7 @@ img {
 #Standings {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 17%;
 }
 
 #Standings td, #Standings th {
@@ -103,6 +122,42 @@ img {
    color: white;
    text-decoration:none;
 }
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
 </style>
 </head>
 <body class="w3">
@@ -125,7 +180,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 <!-- Button links -->
 <nav class="w3-col m10 l12">
   <ul></ul>
-  <li><button class="home"><a href="index.html"><b>Home</b></a></button></li>
+  <li class="navigation"><button class="home"><a href="index.html"><b>Home</b></a></button></li>
   <li class="dropdown">
     <button class="dropbtn"><a href="Team Stats.html"><b>Team Stats</b></a></button>
   <div class="dropdown-content">
@@ -137,12 +192,12 @@ and is wrapped around the whole page content, except for the footer in this exam
     <a href="Tim.html">Tim</a>
     <a href="Vincent.html">Vincent</a>
   </div>
-  <li><button class="BoxScores"><a href="BoxScores.html"><b>Box Scores</b></a></button></li>
+  <li class="navigation"><button class="BoxScores"><a href="BoxScores.html"><b>Box Scores</b></a></button></li>
 </li>
-  <li><button class="Trades"><a href="Trades.html"><b>Trades</b></a></button></li>
-  <li><button class="Free-Agents"><a href="Free Agents.html"><b>Free Agents</b></a></button></li>
-  <li><button class="Scoring-FAQ"><a href="RulesScoring.html"><b>Rules and Scoring FAQ</b></a></button></li>
-  <li><button class="Watch-Games"><a href="Watch Games.html"><b>Watch Games</b></a></button></li>
+  <li class="navigation"><button class="Trades"><a href="Trades.html"><b>Trades</b></a></button></li>
+  <li class="navigation"><button class="Free-Agents"><a href="Free Agents.html"><b>Free Agents</b></a></button></li>
+  <li class="navigation"><button class="Scoring-FAQ"><a href="RulesScoring.html"><b>Rules and Scoring FAQ</b></a></button></li>
+  <li class="navigation"><button class="Watch-Games"><a href="Watch Games.html"><b>Watch Games</b></a></button></li>
 </ul>
      </nav>
 <!-- Standings -->
@@ -153,6 +208,81 @@ and is wrapped around the whole page content, except for the footer in this exam
     <div class="w3-container">
       <h3><b>Rules and Scoring FAQ</b></h3>
     </div>
+    <button class="accordion">Draft rules</button>
+<div class="panel">
+  <ul>
+    <li class="bullet">- We will be doing a "Snake" style draft (first player picks last every other round)</li>
+    <li class="bullet">- The draft will be seven rounds</li>
+    <li class="bullet">- Teams will need: 1 Setter, 2 Outside Hitters, 1 Opposite Hitter, 2 Blockers, and 1 Libero</li>
+</div>
+
+<button class="accordion">Scoring system</button>
+<div class="panel">
+  <h5>We take a players stat totals for each match, and project it to a four set match. This standardizes each match for each player's contributions. It also avoids rewarding players for playing longer matches (which is not good). We calculate per set scores for each stat and multiply that by four to normalize the data to four sets.</h4>
+  <h5>Raw point calculations:</h5>
+<table id="Standings">
+  <tr>
+    <th>Player Action
+      </th>
+      <th>Points
+      </th>
+    </tr>
+    <tr>
+    <td>Kill</td>
+    <td>+1</td>
+    </tr>
+        <tr>
+    <td>Block</td>
+    <td>+1</td>
+    </tr>
+    <tr>
+    <td>Dig</td>
+    <td>+1</td>
+    </tr>
+        <tr>
+    <td>Assist</td>
+    <td>+1/2</td>
+    </tr>
+    <tr>
+    <td>Ace</td>
+    <td>+1</td>
+    </tr>
+    <tr>
+    <td>Perfect Pass</td>
+    <td>+1</td>
+    </tr>
+    <tr>
+    <td>Error</td>
+    <td>-1</td>
+    </tr>
+</table>
+</div>
+<button class="accordion">Why are my team's stats different than PVF's box score?</button>
+<div class="panel">
+  <h5>There are two reasons for this:</h5>
+    <ul>
+    <li class="bullet">- We normalize the stats to equal a four set match</li>
+    <li class="bullet">- Our data scraping system is not 100% accurate (but very close)</li>
+  </ul>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
     <div class="w3-container">
       </div>
     </div>

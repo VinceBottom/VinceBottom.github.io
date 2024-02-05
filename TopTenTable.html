@@ -1,21 +1,22 @@
-<style>
+ <style>
 /* Change the background color of the dropdown button when the dropdown content is shown */
-#FreeAgentTable {
+#TopTen {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
+body,h1,h2,h3,h4,h5,p {font-family: "Raleway"}
 
-#FreeAgentTable td, #FreeAgentTable th {
+#TopTen td, #TopTen th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#FreeAgentTable tr:nth-child(even){background-color: #f2f2f2;}
+#TopTen tr:nth-child(even){background-color: #f2f2f2;}
 
-#FreeAgentTable tr:hover {background-color: #ddd;}
+#TopTen tr:hover {background-color: #ddd;}
 
-#FreeAgentTable th {
+#TopTen th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
@@ -33,24 +34,24 @@
   margin-bottom: 12px; /* Add some space below the input */
 }
 
-#FreeAgentTable {
+#TopTen {
   border-collapse: collapse; /* Collapse borders */
   width: 100%; /* Full-width */
   border: 1px solid #ddd; /* Add a grey border */
   font-size: 18px; /* Increase font-size */
 }
 
-#FreeAgentTable th, #myTable td {
+#TopTen th, #myTable td {
   text-align: left; /* Left-align text */
   padding: 12px; /* Add padding */
 }
 
-#FreeAgentTable tr {
+#TopTen tr {
   /* Add a bottom border to all table rows */
   border-bottom: 1px solid #ddd;
 }
 
-#FreeAgentTable tr.header, #myTable tr:hover {
+#TopTen tr.header, #myTable tr:hover {
   /* Add a grey background color to the table header and on hover */
   background-color: #f1f1f1;
 }
@@ -65,7 +66,7 @@
 <script>
 function sortTable(n) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById("FreeAgentTable");
+  table = document.getElementById("TopTen");
   switching = true;
   // Set the sorting direction to ascending:
   dir = "asc";
@@ -124,7 +125,7 @@ function searchTable() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
-  table = document.getElementById("FreeAgentTable");
+  table = document.getElementById("TopTen");
   tr = table.getElementsByTagName("tr");
 
   // Loop through all table rows, and hide those who don't match the search query
@@ -141,27 +142,20 @@ function searchTable() {
   }
 }
 </script>
-<table id="FreeAgentTable">
-  <input type="text" id="myInput" onkeyup="searchTable()" placeholder="Search for player names">
+  <table id="TopTen">
   <tr>
-    <th class='heading' onclick="sortTable(0)">Player<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-        <th class='heading' onclick="sortTable(1)">Pos<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(2)">Team<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(3)">Fantasy Pts<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-        <th class='heading' onclick="sortTable(4)">Pts Last 14 Days<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(5)">Kills<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(6)">Assists<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(7)">Digs<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(8)">Perfect Passes<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(9)">Blocks<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(10)">Aces<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(11)">Errors<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+      <th class='heading' onclick="sortTable(0)">Team<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+        <th class='heading' onclick="sortTable(1)">Fantasy Points<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+    <th class='heading' onclick="sortTable(2)">Kills<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+    <th class='heading' onclick="sortTable(3)">Assists<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+        <th class='heading' onclick="sortTable(4)">Digs<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+    <th class='heading' onclick="sortTable(5)">Perfect Passes<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+    <th class='heading' onclick="sortTable(6)">Blocks<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+    <th class='heading' onclick="sortTable(7)">Aces<img src="sorticonverysmall.png" alt="Sort by column icon"/></th>
+    <th class='heading' onclick="sortTable(8)">Errors<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
   </tr>
   <tr>
     <td class='left'>Lauren</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
     <td>-</td>
     <td>-</td>
     <td>-</td>
@@ -181,15 +175,9 @@ function searchTable() {
     <td>-</td>
     <td>-</td>
     <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
   </tr>
     <tr>
     <td class='left'>Shauna</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
     <td>-</td>
     <td>-</td>
     <td>-</td>
@@ -209,15 +197,9 @@ function searchTable() {
     <td>-</td>
     <td>-</td>
     <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
   </tr>
     <tr>
     <td class='left'>Mike</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
     <td>-</td>
     <td>-</td>
     <td>-</td>
@@ -237,10 +219,5 @@ function searchTable() {
     <td>-</td>
     <td>-</td>
     <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
 </table>
-      </div>
-    </div>
-  </div>
+<p>Updated on Monday, Jan. 29, 2024.</p>
