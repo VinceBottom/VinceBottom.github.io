@@ -37,19 +37,25 @@ a:active {
 nav{
    display: flex;
    align-items: center;
-   justify-content: center
+   justify-content: center;
+   flex-wrap:wrap;
   }
+iframe {
+    overflow:hidden;
+    width:100%;
+}
 h1 {
     text-shadow: 1px 1px 1px #ccc;
 }
 .div-that-you want-to-stand-out {
     box-shadow: 0 0 1em 1em #ccc;
 }
-
 img {
-  position:absolute;
+  position:relative;
   left:0;
   top:0;
+  display:block;
+  margin:auto;
 }
 
 /* Dropdown Button */
@@ -138,7 +144,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 <header class="w3-container w3-center w3-padding-32">
   <a href="index.html"><h1><b>PVF Fantasy Volleyball League</b></h1></a>
   <p>Welcome to Pro Volleyball Federation Fantasy Volleyball</p>
-  <a href="index.html"><img src="fantasy volleyball league (1).png" alt="Fantasy Volleyball League logo featuring a yellow and blue volleyball with a net, and the words 'Fantasy Volleyball League'" width="220" height="175"></a>
+  <a href="index.html"><img src="fantasy volleyball league (1).png" alt="Fantasy Volleyball League logo featuring a yellow and blue volleyball with a net, and the words 'Fantasy Volleyball League'" width="100" height="80"></a>
 </header>
   <body style="background-color:#EBF3FC;">
   </body>
@@ -168,7 +174,7 @@ and is wrapped around the whole page content, except for the footer in this exam
     </div>
     <div class="w3-container">
       <div id='div_iframe'>
-      <object id='iframe' data="https://provolleyball.com/all-teams-schedule" width="1335" height="1000" type='text/html'></object>
+      <iframe id='iframe' src="https://provolleyball.com/all-teams-schedule" width="1335" height="1000" type='text/html'></iframe>
     </div>
     <script>
        var myObject = document.getElementById('iframe');
