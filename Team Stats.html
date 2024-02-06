@@ -150,6 +150,9 @@ img {
   border: 1px solid #ccc;
   border-top: none;
 }
+.tabopen{
+  display:block;
+}
 </style>
 </head>
 <body class="w3">
@@ -213,7 +216,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 }
 </script>
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'All')">All Players</button>
+  <button class="tablinks" onclick="openCity(event, 'All')" id='defaultOpen'>All Players</button>
   <button class="tablinks" onclick="openCity(event, 'Anna')">Anna Marie</button>
   <button class="tablinks" onclick="openCity(event, 'Lauren')">Lauren</button>
   <button class="tablinks" onclick="openCity(event, 'Madi')">Madi</button>
@@ -222,7 +225,6 @@ and is wrapped around the whole page content, except for the footer in this exam
   <button class="tablinks" onclick="openCity(event, 'Tim')">Tim</button>
   <button class="tablinks" onclick="openCity(event, 'Vincent')">Vincent</button>
 </div>
-
 <!-- Tab content -->
 <div id="All" class="tabcontent">
   <h3>All Player Stats</h3>
@@ -267,7 +269,7 @@ and is wrapped around the whole page content, except for the footer in this exam
     <div class="w3-container">
       </div>
     </div>
-  </div>
+  </div> 
   <hr>
 <!-- END BLOG ENTRIES -->
 </div>
@@ -284,5 +286,9 @@ and is wrapped around the whole page content, except for the footer in this exam
 <footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
   <p>Powered by VBOT International Airport</p>
 </footer>
+<script>
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
 </body>
 </html>
