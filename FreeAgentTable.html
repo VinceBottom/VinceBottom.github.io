@@ -1,246 +1,48 @@
-<style>
-/* Change the background color of the dropdown button when the dropdown content is shown */
-#FreeAgentTable {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-#FreeAgentTable td, #FreeAgentTable th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#FreeAgentTable tr:nth-child(even){background-color: #f2f2f2;}
-
-#FreeAgentTable tr:hover {background-color: #ddd;}
-
-#FreeAgentTable th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
-  background-color: #042159;
-  color: white;
-}
-#myInput {
-  background-image: url('search-icon2.png'); /* Add a search icon to input */
-  background-position: 10px 12px; /* Position the search icon */
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 40%; /* Full-width */
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
-}
-
-#FreeAgentTable {
-  border-collapse: collapse; /* Collapse borders */
-  width: 100%; /* Full-width */
-  border: 1px solid #ddd; /* Add a grey border */
-  font-size: 18px; /* Increase font-size */
-}
-
-#FreeAgentTable th, #myTable td {
-  text-align: left; /* Left-align text */
-  padding: 12px; /* Add padding */
-}
-
-#FreeAgentTable tr {
-  /* Add a bottom border to all table rows */
-  border-bottom: 1px solid #ddd;
-}
-
-#FreeAgentTable tr.header, #myTable tr:hover {
-  /* Add a grey background color to the table header and on hover */
-  background-color: #f1f1f1;
-}
-.icon {
-  display: inline-block;
-  float: right;
-}
-.heading:hover{
-  cursor:pointer;
-}
-</style>
-<script>
-function sortTable(n) {
-  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById("FreeAgentTable");
-  switching = true;
-  // Set the sorting direction to ascending:
-  dir = "asc";
-  /* Make a loop that will continue until
-  no switching has been done: */
-  while (switching) {
-    // Start by saying: no switching is done:
-    switching = false;
-    rows = table.rows;
-    /* Loop through all table rows (except the
-    first, which contains table headers): */
-    for (i = 1; i < (rows.length - 1); i++) {
-      // Start by saying there should be no switching:
-      shouldSwitch = false;
-      /* Get the two elements you want to compare,
-      one from current row and one from the next: */
-      x = rows[i].getElementsByTagName("TD")[n];
-      y = rows[i + 1].getElementsByTagName("TD")[n];
-      /* Check if the two rows should switch place,
-      based on the direction, asc or desc: */
-      if (dir == "asc") {
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          // If so, mark as a switch and break the loop:
-          shouldSwitch = true;
-          break;
-        }
-      } else if (dir == "desc") {
-        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-          // If so, mark as a switch and break the loop:
-          shouldSwitch = true;
-          break;
-        }
-      }
-    }
-    if (shouldSwitch) {
-      /* If a switch has been marked, make the switch
-      and mark that a switch has been done: */
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-      // Each time a switch is done, increase this count by 1:
-      switchcount ++;
-    } else {
-      /* If no switching has been done AND the direction is "asc",
-      set the direction to "desc" and run the while loop again. */
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
-        switching = true;
-      }
-    }
-  }
-}
-</script>
-<script>
-function searchTable() {
-  // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("FreeAgentTable");
-  tr = table.getElementsByTagName("tr");
-
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
+<link rel="stylesheet" href="FreeAgentTableStyles.css">
+<script type="text/javascript" src="FreeAgentTableScript.js"></script>
 <table id="FreeAgentTable">
-  <input type="text" id="myInput" onkeyup="searchTable()" placeholder="Search for player names">
-  <tr>
-    <th class='heading' onclick="sortTable(0)">Player<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-        <th class='heading' onclick="sortTable(1)">Pos<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(2)">Team<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(3)">Fantasy Pts<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-        <th class='heading' onclick="sortTable(4)">Pts Last 14 Days<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(5)">Kills<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(6)">Assists<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(7)">Digs<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(8)">Perfect Passes<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(9)">Blocks<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(10)">Aces<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-    <th class='heading' onclick="sortTable(11)">Errors<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-  </tr>
-  <tr>
-    <td class='left'>Lauren</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td class='left'>Tim</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-  </tr>
-    <tr>
-    <td class='left'>Shauna</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-  </tr>
-    <tr>
-    <td class='left'>Madi</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-  </tr>
-    <tr>
-    <td class='left'>Mike</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-  </tr>
-    <tr>
-    <td class='left'>Anna Marie</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
+<tr>
+<th class="heading" onclick="sortTable(0)">Name<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+<th class="heading" onclick="sortTable(1)">Team<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+<th class="heading" onclick="sortTable(2)">Pos<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+<th class="heading" onclick="sortTable(3)">Injury Status<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+<th class="heading" onclick="sortTable(4)">Pts/Match<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+<th class="heading" onclick="sortTable(5)">Kills/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+<th class="heading" onclick="sortTable(6)">Assists/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+<th class="heading" onclick="sortTable(7)">Digs/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+<th class="heading" onclick="sortTable(8)">Blocks/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+<th class="heading" onclick="sortTable(9)">Perf Pass/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+<th class="heading" onclick="sortTable(11)">Aces/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+<th class="heading" onclick="sortTable(12)">Errors/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+<th class="heading" onclick="sortTable(13)">Szn Pts<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+</tr>
+
+<tr><td>Alli Linnehan            </td><td>Vibe      </td><td>OH </td><td>+</td><td style="text-align: right;">17</td><td style="text-align: right;">5</td><td style="text-align: right;">0</td><td style="text-align: right;">10</td><td style="text-align: right;">3</td><td style="text-align: right;">2</td><td style="text-align: right;">0</td><td style="text-align: right;">3</td><td style="text-align: right;">68</td></tr>
+<tr><td>Leketor Member-Meneh     </td><td>Vibe      </td><td>OH </td><td> </td><td style="text-align: right;">10</td><td style="text-align: right;">4</td><td style="text-align: right;">0</td><td style="text-align: right;"> 6</td><td style="text-align: right;">0</td><td style="text-align: right;">2</td><td style="text-align: right;">0</td><td style="text-align: right;">3</td><td style="text-align: right;">40</td></tr>
+<tr><td>Marlie Monserez          </td><td>Vibe      </td><td>S  </td><td> </td><td style="text-align: right;"> 7</td><td style="text-align: right;">1</td><td style="text-align: right;">5</td><td style="text-align: right;"> 3</td><td style="text-align: right;">1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">1</td><td style="text-align: right;">28</td></tr>
+<tr><td>Kendra Dahlke            </td><td>Mojo      </td><td>OPP</td><td> </td><td style="text-align: right;"> 6</td><td style="text-align: right;">3</td><td style="text-align: right;">0</td><td style="text-align: right;"> 4</td><td style="text-align: right;">2</td><td style="text-align: right;">3</td><td style="text-align: right;">0</td><td style="text-align: right;">6</td><td style="text-align: right;">12</td></tr>
+<tr><td>Yossiana Pressley        </td><td>Vibe      </td><td>OH </td><td> </td><td style="text-align: right;"> 6</td><td style="text-align: right;">3</td><td style="text-align: right;">0</td><td style="text-align: right;"> 2</td><td style="text-align: right;">3</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">2</td><td style="text-align: right;">24</td></tr>
+<tr><td>Natalia Valentin-Anderson</td><td>Supernovas</td><td>S  </td><td> </td><td style="text-align: right;"> 5</td><td style="text-align: right;">0</td><td style="text-align: right;">6</td><td style="text-align: right;"> 3</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">2</td><td style="text-align: right;">15</td></tr>
+<tr><td>Grace Loberg             </td><td>Mojo      </td><td>OH </td><td> </td><td style="text-align: right;"> 5</td><td style="text-align: right;">1</td><td style="text-align: right;">0</td><td style="text-align: right;"> 2</td><td style="text-align: right;">3</td><td style="text-align: right;">1</td><td style="text-align: right;">0</td><td style="text-align: right;">3</td><td style="text-align: right;">10</td></tr>
+<tr><td>Jenaisya Moore           </td><td>Fury      </td><td>OH </td><td> </td><td style="text-align: right;"> 5</td><td style="text-align: right;">1</td><td style="text-align: right;">0</td><td style="text-align: right;"> 4</td><td style="text-align: right;">0</td><td style="text-align: right;">3</td><td style="text-align: right;">0</td><td style="text-align: right;">3</td><td style="text-align: right;"> 5</td></tr>
+<tr><td>Aurea Cruz               </td><td>Valkyries </td><td>OH </td><td> </td><td style="text-align: right;"> 3</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 3</td><td style="text-align: right;">0</td><td style="text-align: right;">2</td><td style="text-align: right;">1</td><td style="text-align: right;">3</td><td style="text-align: right;"> 3</td></tr>
+<tr><td>Lindsey Vander Weide     </td><td>Mojo      </td><td>OH </td><td> </td><td style="text-align: right;"> 3</td><td style="text-align: right;">1</td><td style="text-align: right;">0</td><td style="text-align: right;"> 1</td><td style="text-align: right;">1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 6</td></tr>
+<tr><td>Nia Reed                 </td><td>Supernovas</td><td>OPP</td><td> </td><td style="text-align: right;"> 3</td><td style="text-align: right;">2</td><td style="text-align: right;">0</td><td style="text-align: right;"> 0</td><td style="text-align: right;">2</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">1</td><td style="text-align: right;"> 9</td></tr>
+<tr><td>August Raskie            </td><td>Mojo      </td><td>S  </td><td> </td><td style="text-align: right;"> 3</td><td style="text-align: right;">0</td><td style="text-align: right;">4</td><td style="text-align: right;"> 3</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">1</td><td style="text-align: right;"> 6</td></tr>
+<tr><td>Gabby Blossom            </td><td>Fury      </td><td>S  </td><td> </td><td style="text-align: right;"> 3</td><td style="text-align: right;">1</td><td style="text-align: right;">4</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 3</td></tr>
+<tr><td>Alison Bastianelli       </td><td>Mojo      </td><td>MB </td><td> </td><td style="text-align: right;"> 2</td><td style="text-align: right;">1</td><td style="text-align: right;">0</td><td style="text-align: right;"> 1</td><td style="text-align: right;">1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 4</td></tr>
+<tr><td>Megan Jemison            </td><td>Thrill    </td><td>OH </td><td> </td><td style="text-align: right;"> 2</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;">2</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 2</td></tr>
+<tr><td>Regan Pittman            </td><td>Vibe      </td><td>MB </td><td> </td><td style="text-align: right;"> 2</td><td style="text-align: right;">1</td><td style="text-align: right;">0</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 8</td></tr>
+<tr><td>Kamaile Hiapo            </td><td>Vibe      </td><td>L  </td><td> </td><td style="text-align: right;"> 1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">1</td><td style="text-align: right;"> 4</td></tr>
+<tr><td>Allison Mayfield         </td><td>Supernovas</td><td>OH </td><td> </td><td style="text-align: right;"> 1</td><td style="text-align: right;">1</td><td style="text-align: right;">0</td><td style="text-align: right;"> 0</td><td style="text-align: right;">1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 3</td></tr>
+<tr><td>Ashley Wenz              </td><td>Fury      </td><td>OPP</td><td> </td><td style="text-align: right;"> 1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 7</td><td style="text-align: right;">3</td><td style="text-align: right;">0</td><td style="text-align: right;">1</td><td style="text-align: right;">9</td><td style="text-align: right;"> 1</td></tr>
+<tr><td>Alyssa Jensen            </td><td>Rise      </td><td>MB </td><td> </td><td style="text-align: right;"> 1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 2</td></tr>
+<tr><td>Shannon Scully           </td><td>Rise      </td><td>OH </td><td> </td><td style="text-align: right;"> 1</td><td style="text-align: right;">1</td><td style="text-align: right;">0</td><td style="text-align: right;"> 1</td><td style="text-align: right;">0</td><td style="text-align: right;">1</td><td style="text-align: right;">0</td><td style="text-align: right;">1</td><td style="text-align: right;"> 2</td></tr>
+<tr><td>Nia Grant                </td><td>Rise      </td><td>MB </td><td> </td><td style="text-align: right;"> 1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 0</td><td style="text-align: right;">2</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">1</td><td style="text-align: right;"> 2</td></tr>
+<tr><td>Kacie Evans              </td><td>Vibe      </td><td>OH </td><td> </td><td style="text-align: right;"> 1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 4</td></tr>
+<tr><td>Carly Skjodt             </td><td>Valkyries </td><td>OH </td><td> </td><td style="text-align: right;"> 1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 1</td></tr>
+<tr><td>Gina Prososki            </td><td>Supernovas</td><td>OH </td><td> </td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">1</td><td style="text-align: right;"> 0</td></tr>
+<tr><td>Paulina Prieto-Cerame    </td><td>Thrill    </td><td>OH </td><td> </td><td style="text-align: right;"> 0</td><td style="text-align: right;">1</td><td style="text-align: right;">0</td><td style="text-align: right;"> 1</td><td style="text-align: right;">1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">2</td><td style="text-align: right;"> 0</td></tr>
+<tr><td>Ivania Ortiz DeJesus     </td><td>Fury      </td><td>OH </td><td> </td><td style="text-align: right;">-1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">1</td><td style="text-align: right;">-1</td></tr>
+<tr><td>Berkeley Oblad           </td><td>Thrill    </td><td>MB </td><td> </td><td style="text-align: right;">-1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">1</td><td style="text-align: right;">-1</td></tr>
 </table>
-      </div>
-    </div>
-  </div>

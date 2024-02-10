@@ -1,6 +1,6 @@
 function sortTable(n) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById("AllTable");
+  table = document.getElementById("Standings");
   switching = true;
   // Set the sorting direction to ascending:
   dir = "asc";
@@ -57,7 +57,7 @@ function searchTable() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
-  table = document.getElementById("AllTable");
+  table = document.getElementById("Standings");
   tr = table.getElementsByTagName("tr");
 
   // Loop through all table rows, and hide those who don't match the search query
@@ -71,26 +71,5 @@ function searchTable() {
         tr[i].style.display = "none";
       }
     }
-  } 
-}
-function searchTable2() {
-  // Declare variables
-  var input2, filter2, table, tr2, td2, i2, txtValue2;
-  input2 = document.getElementById("myInputPos");
-  filter2 = input2.value.toUpperCase();
-  table2 = document.getElementById("AllTable");
-  tr2 = table2.getElementsByTagName("tr");
-
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i2 = 0; i2 < tr2.length; i2++) {
-    td2 = tr2[i2].getElementsByTagName("td")[2];
-    if (td2) {
-      txtValue2 = td2.textContent || td2.innerText;
-      if (txtValue2.toUpperCase().indexOf(filter2) > -1) {
-        tr2[i2].style.display = "";
-      } else {
-        tr2[i2].style.display = "none";
-      }
-    }
-  } 
+  }
 }

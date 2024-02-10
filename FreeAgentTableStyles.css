@@ -1,21 +1,21 @@
 <style>
 /* Change the background color of the dropdown button when the dropdown content is shown */
-#AllTable {
+#FreeAgentTable {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
 
-#AllTable td, #AllTable th {
+#FreeAgentTable td, #FreeAgentTable th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#AllTable tr:nth-child(even){background-color: #f2f2f2;}
+#FreeAgentTable tr:nth-child(even){background-color: #f2f2f2;}
 
-#AllTable tr:hover {background-color: #ddd;}
+#FreeAgentTable tr:hover {background-color: #ddd;}
 
-#AllTable th {
+#FreeAgentTable th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
@@ -26,42 +26,31 @@
   background-image: url('search-icon2.png'); /* Add a search icon to input */
   background-position: 10px 12px; /* Position the search icon */
   background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 52%; /* Full-width */
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
-}
-#myInputPos {
-  background-image: url('search-icon2.png'); /* Add a search icon to input */
-  background-position: 10px 12px; /* Position the search icon */
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 52%; /* Full-width */
+  width: 40%; /* Full-width */
   font-size: 16px; /* Increase font-size */
   padding: 12px 20px 12px 40px; /* Add some padding */
   border: 1px solid #ddd; /* Add a grey border */
   margin-bottom: 12px; /* Add some space below the input */
 }
 
-
-#AllTable {
+#FreeAgentTable {
   border-collapse: collapse; /* Collapse borders */
   width: 100%; /* Full-width */
   border: 1px solid #ddd; /* Add a grey border */
   font-size: 18px; /* Increase font-size */
 }
 
-#AllTable th, #myTable td {
+#FreeAgentTable th, #myTable td {
   text-align: left; /* Left-align text */
   padding: 12px; /* Add padding */
 }
 
-#AllTable tr {
+#FreeAgentTable tr {
   /* Add a bottom border to all table rows */
   border-bottom: 1px solid #ddd;
 }
 
-#AllTable tr.header, #myTable tr:hover {
+#FreeAgentTable tr.header, #myTable tr:hover {
   /* Add a grey background color to the table header and on hover */
   background-color: #f1f1f1;
 }
@@ -71,5 +60,10 @@
 }
 .heading:hover{
   cursor:pointer;
+}
+table td:nth-child(4) {
+    font-weight:bolder;
+    color: red;
+    text-align:center;
 }
 </style>
