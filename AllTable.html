@@ -1,23 +1,57 @@
-<link rel="stylesheet" href="AllTableStyles.css">
-<script type="text/javascript" src="AllTableScript.js"></script>
-<table id="AllTable">
-<input type="text" id="myInput" onkeyup="searchTable()" placeholder="Search for player names">
+<style>
+  table, td, tr, p {
+    font-family:"Calibri","Arial","Serif";
+    background-color:white;
+    font-size:17px;
+  }
+  table {
+    border-style:outset;
+    filter:drop-shadow();
+  }
+  .dt-info {
+    font-family:"Calibri","Arial","Serif";
+    font-size:16px;
+  }
+      .dt-paging-button {
+    font-size:14px;
+  }
+    .dt-search {
+    font-family:"Calibri","Arial","Serif";
+    font-size:18px;
+  }
+    .dt-length {
+    font-family:"Calibri","Arial","Serif";
+    font-size:18px;
+  }
+  th {
+    font-family:"Calibri","Arial","Serif";
+    font-size:18px;
+    background-color:#E4EBF2;
+  }
+</style>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
+<table id="AllTable" class="stripe" style="width:100%">
+<thead>
 <tr>
-<th class="heading" onclick="sortTable(0)">Player<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(1)">Team<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(2)">Pos<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(3)">Pts/Match<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(4)">Kills/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(5)">Assists/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(6)">Digs/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(7)">Blocks/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(8)">Perf Pass/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(9)">Aces/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(10)">Err/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(11)">2 Wk Avg<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(12)">Tot Pts<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(13)">Matches<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+<th class="heading">Player</th>
+<th class="heading">Team</th>
+<th class="heading">Pos</th>
+<th class="heading">Pts</th>
+<th class="heading">Kill</th>
+<th class="heading">Ast</th>
+<th class="heading">Dig</th>
+<th class="heading">Blk</th>
+<th class="heading">Pfp</th>
+<th class="heading">Ace</th>
+<th class="heading">Err</th>
+<th class="heading">14 Day</th>
+<th class="heading">Tot</th>
+<th class="heading">MP</th>
 </tr>
+</thead>
+<tbody>
 
 <tr><td>Alisha Glass Childress   </td><td>Mike              </td><td>S  </td><td style="text-align: right;">36</td><td style="text-align: right;"> 2</td><td style="text-align: right;">40</td><td style="text-align: right;">14</td><td style="text-align: right;"> 5</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 5</td><td style="text-align: right;">37</td><td style="text-align: right;">144</td><td style="text-align: right;">4</td></tr>
 <tr><td>Claire Chaussee          </td><td>Screebie&#x27;s Deebies</td><td>OH </td><td style="text-align: right;">34</td><td style="text-align: right;">16</td><td style="text-align: right;"> 1</td><td style="text-align: right;">15</td><td style="text-align: right;"> 3</td><td style="text-align: right;"> 7</td><td style="text-align: right;">1</td><td style="text-align: right;">10</td><td style="text-align: right;">36</td><td style="text-align: right;">136</td><td style="text-align: right;">4</td></tr>
@@ -78,7 +112,7 @@
 <tr><td>Mac Podraza              </td><td>Free Agent        </td><td>S  </td><td style="text-align: right;"> 5</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 5</td><td style="text-align: right;"> 2</td><td style="text-align: right;"> 1</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 9</td><td style="text-align: right;"> 20</td><td style="text-align: right;">4</td></tr>
 <tr><td>Asjia O&#x27;Neal             </td><td>Bikini Kills      </td><td>MB </td><td style="text-align: right;"> 5</td><td style="text-align: right;"> 3</td><td style="text-align: right;"> 1</td><td style="text-align: right;"> 2</td><td style="text-align: right;"> 2</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 3</td><td style="text-align: right;"> 8</td><td style="text-align: right;"> 10</td><td style="text-align: right;">2</td></tr>
 <tr><td>Carly Graham             </td><td>Free Agent        </td><td>S  </td><td style="text-align: right;"> 5</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 8</td><td style="text-align: right;"> 2</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 1</td><td style="text-align: right;">14</td><td style="text-align: right;"> 25</td><td style="text-align: right;">5</td></tr>
-<tr><td>Anna Lazareva            </td><td>Free Agent        </td><td>OPP</td><td style="text-align: right;"> 5</td><td style="text-align: right;"> 4</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 3</td><td style="text-align: right;"> 1</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 2</td><td style="text-align: right;">34</td><td style="text-align: right;"> 30</td><td style="text-align: right;">6</td></tr>
+<tr><td>Anna Lazareva            </td><td>Free Agent        </td><td>OPP</td><td style="text-align: right;"> 5</td><td style="text-align: right;"> 4</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 3</td><td style="text-align: right;"> 1</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 2</td><td style="text-align: right;">27</td><td style="text-align: right;"> 30</td><td style="text-align: right;">6</td></tr>
 <tr><td>Yossiana Pressley        </td><td>Free Agent        </td><td>OH </td><td style="text-align: right;"> 4</td><td style="text-align: right;"> 2</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 1</td><td style="text-align: right;"> 2</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 1</td><td style="text-align: right;"> 2</td><td style="text-align: right;"> 24</td><td style="text-align: right;">6</td></tr>
 <tr><td>Regan Pittman            </td><td>Free Agent        </td><td>MB </td><td style="text-align: right;"> 4</td><td style="text-align: right;"> 2</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 1</td><td style="text-align: right;"> 2</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 0</td><td style="text-align: right;">19</td><td style="text-align: right;"> 24</td><td style="text-align: right;">6</td></tr>
 <tr><td>Kendra Dahlke            </td><td>Free Agent        </td><td>OPP</td><td style="text-align: right;"> 4</td><td style="text-align: right;"> 2</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 3</td><td style="text-align: right;"> 1</td><td style="text-align: right;"> 2</td><td style="text-align: right;">0</td><td style="text-align: right;"> 4</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 12</td><td style="text-align: right;">3</td></tr>
@@ -113,4 +147,8 @@
 <tr><td>Gina Prososki            </td><td>Free Agent        </td><td>OH </td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 1</td><td style="text-align: right;">  0</td><td style="text-align: right;">6</td></tr>
 <tr><td>Paula Cerame             </td><td>Free Agent        </td><td>L  </td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 1</td><td style="text-align: right;"> 0</td><td style="text-align: right;">  0</td><td style="text-align: right;">5</td></tr>
 <tr><td>Ivania Ortiz DeJesus     </td><td>Free Agent        </td><td>OH </td><td style="text-align: right;">-1</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 1</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> -2</td><td style="text-align: right;">2</td></tr>
-</table
+</tbody>
+</table>
+<script>new DataTable('#AllTable', {
+  order: [[3,'desc']]
+});</script>

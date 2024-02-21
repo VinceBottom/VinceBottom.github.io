@@ -1,0 +1,31 @@
+<style>
+  table, td, tr, p {
+    font-family:"Calibri","Arial","Serif";
+    background-color:white;
+    font-size:17px;
+  }
+  table {
+    border-style:outset;
+    filter:drop-shadow();
+  }
+  .dt-info {
+    font-family:"Calibri","Arial","Serif";
+    font-size:16px;
+  }
+      .dt-paging-button {
+    font-size:14px;
+  }
+    .dt-search {
+    font-family:"Calibri","Arial","Serif";
+    font-size:18px;
+  }
+    .dt-length {
+    font-family:"Calibri","Arial","Serif";
+    font-size:18px;
+  }
+  th {
+    font-family:"Calibri","Arial","Serif";
+    font-size:18px;
+    background-color:#E4EBF2;
+  }
+</style>

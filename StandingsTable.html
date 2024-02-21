@@ -1,19 +1,54 @@
-<link rel="stylesheet" href="StandingsTableStyles.css">
-<script type="text/javascript" src="StandingsTableScript.js"></script>
-<table id="Standings">
+<style>
+  table, td, tr, p {
+    font-family:"Calibri","Arial","Serif";
+    background-color:white;
+    font-size:17px;
+  }
+  table {
+    border-style:outset;
+    filter:drop-shadow();
+  }
+  .dt-info {
+    font-family:"Calibri","Arial","Serif";
+    font-size:16px;
+  }
+      .dt-paging-button {
+    font-size:14px;
+  }
+    .dt-search {
+    font-family:"Calibri","Arial","Serif";
+    font-size:18px;
+  }
+    .dt-length {
+    font-family:"Calibri","Arial","Serif";
+    font-size:18px;
+  }
+  th {
+    font-family:"Calibri","Arial","Serif";
+    font-size:18px;
+    background-color:#E4EBF2;
+  }
+</style>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
+<table id="StandingsTable" class="stripe" style="width:100%">
+<thead>
 <tr>
-<th class="heading" onclick="sortTable(0)">Team<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(1)">Tot Pts<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(2)">Kills/Match<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(3)">Assists/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(4)">Digs/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(5)">Perf Pass/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(6)">Blocks/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(7)">Aces/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(8)">Err/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(9)">Pts/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(10)">Matches<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+<th class="heading">Team</th>
+<th class="heading">Tot Pts</th>
+<th class="heading">Kill</th>
+<th class="heading">Ast</th>
+<th class="heading">Dig</th>
+<th class="heading">Pfp</th>
+<th class="heading">Blk</th>
+<th class="heading">Ace</th>
+<th class="heading">Err</th>
+<th class="heading">Pts/M</th>
+<th class="heading">MP</th>
 </tr>
+</thead>
+<tbody>
 
 <tr><td>Tim               </td><td style="text-align: right;">659</td><td style="text-align: right;">39</td><td style="text-align: right;">33</td><td style="text-align: right;">53</td><td style="text-align: right;">20</td><td style="text-align: right;">22</td><td style="text-align: right;">3</td><td style="text-align: right;">29</td><td style="text-align: right;">135</td><td style="text-align: right;">34</td></tr>
 <tr><td>Bikini Kills      </td><td style="text-align: right;">636</td><td style="text-align: right;">43</td><td style="text-align: right;">43</td><td style="text-align: right;">49</td><td style="text-align: right;">14</td><td style="text-align: right;">22</td><td style="text-align: right;">3</td><td style="text-align: right;">29</td><td style="text-align: right;">148</td><td style="text-align: right;">30</td></tr>
@@ -22,5 +57,12 @@
 <tr><td>Shauna            </td><td style="text-align: right;">512</td><td style="text-align: right;">36</td><td style="text-align: right;">30</td><td style="text-align: right;">45</td><td style="text-align: right;">16</td><td style="text-align: right;">29</td><td style="text-align: right;">1</td><td style="text-align: right;">33</td><td style="text-align: right;">119</td><td style="text-align: right;">30</td></tr>
 <tr><td>Oreo Cakesters    </td><td style="text-align: right;">496</td><td style="text-align: right;">43</td><td style="text-align: right;">26</td><td style="text-align: right;">45</td><td style="text-align: right;">19</td><td style="text-align: right;">28</td><td style="text-align: right;">2</td><td style="text-align: right;">36</td><td style="text-align: right;">119</td><td style="text-align: right;">29</td></tr>
 <tr><td>Madi              </td><td style="text-align: right;">438</td><td style="text-align: right;">24</td><td style="text-align: right;">32</td><td style="text-align: right;">44</td><td style="text-align: right;">11</td><td style="text-align: right;">17</td><td style="text-align: right;">4</td><td style="text-align: right;">24</td><td style="text-align: right;">105</td><td style="text-align: right;">29</td></tr>
+</tbody>
 </table>
-<p style="font-style:italic;">Last updated on Monday, February 19 2024 at 08:56PM</p>
+<p style="font-style:italic;">Last updated on Wednesday, February 21 2024 at 07:29AM</p>
+<script>new DataTable('#StandingsTable', {
+  order: [[1,'desc']],
+  paging: false,
+  info:false,
+  searching:false
+});</script>

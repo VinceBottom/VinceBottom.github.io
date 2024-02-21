@@ -1,22 +1,57 @@
-<link rel="stylesheet" href="FreeAgentTableStyles.css">
-<script type="text/javascript" src="FreeAgentTableScript.js"></script>
-<table id="FreeAgentTable">
+<style>
+  table, td, tr, p {
+    font-family:"Calibri","Arial","Serif";
+    background-color:white;
+    font-size:17px;
+  }
+  table {
+    border-style:outset;
+    filter:drop-shadow();
+  }
+  .dt-info {
+    font-family:"Calibri","Arial","Serif";
+    font-size:16px;
+  }
+      .dt-paging-button {
+    font-size:14px;
+  }
+    .dt-search {
+    font-family:"Calibri","Arial","Serif";
+    font-size:18px;
+  }
+    .dt-length {
+    font-family:"Calibri","Arial","Serif";
+    font-size:18px;
+  }
+  th {
+    font-family:"Calibri","Arial","Serif";
+    font-size:18px;
+    background-color:#E4EBF2;
+  }
+</style>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
+<table id="FreeAgentTable" class="stripe" style="width:100%">
+<thead>
 <tr>
-<th class="heading" onclick="sortTable(0)">Name<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(1)">Team<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(2)">Pos<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(3)">Injury<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(4)">Pts/Match<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(5)">Kills/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(6)">Assists/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(7)">Digs/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(8)">Blocks/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(9)">Perf Pass/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(10)">Aces/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(11)">Err/M<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(12)">2 Wk Avg<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
-<th class="heading" onclick="sortTable(13)">Tot Pts<img class="icon" src="sorticon2.png" height=17 width=15 alt="Sort by column icon"/></th>
+<th class="heading">Name</th>
+<th class="heading">Team</th>
+<th class="heading">Pos</th>
+<th class="heading">Inj</th>
+<th class="heading">Pts/Match</th>
+<th class="heading">Kill</th>
+<th class="heading">Ast</th>
+<th class="heading">Dig</th>
+<th class="heading">Blk</th>
+<th class="heading">Pfp</th>
+<th class="heading">Ace</th>
+<th class="heading">Err</th>
+<th class="heading">14 Day</th>
+<th class="heading">Tot</th>
 </tr>
+</thead>
+<tbody>
 
 <tr><td>Marlie Monserez          </td><td>Vibe      </td><td>S  </td><td> </td><td style="text-align: right;">13</td><td style="text-align: right;">1</td><td style="text-align: right;">14</td><td style="text-align: right;">5</td><td style="text-align: right;">2</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">2</td><td style="text-align: right;">30</td><td style="text-align: right;">78</td></tr>
 <tr><td>Natalia Valentin-Anderson</td><td>Supernovas</td><td>S  </td><td> </td><td style="text-align: right;">13</td><td style="text-align: right;">1</td><td style="text-align: right;">15</td><td style="text-align: right;">5</td><td style="text-align: right;">1</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">2</td><td style="text-align: right;">18</td><td style="text-align: right;">78</td></tr>
@@ -62,4 +97,8 @@
 <tr><td>Megan Jemison            </td><td>Thrill    </td><td>OH </td><td> </td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 1</td><td style="text-align: right;"> 0</td></tr>
 <tr><td>Gina Prososki            </td><td>Supernovas</td><td>OH </td><td>+</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 1</td><td style="text-align: right;"> 0</td></tr>
 <tr><td>Paula Cerame             </td><td>Valkyries </td><td>L  </td><td> </td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;"> 0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">0</td><td style="text-align: right;">1</td><td style="text-align: right;"> 0</td><td style="text-align: right;"> 0</td></tr>
+</tbody>
 </table>
+<script>new DataTable('#FreeAgentTable', {
+  order: [[4,'desc']]
+});</script>
